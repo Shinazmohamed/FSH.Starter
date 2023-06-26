@@ -26,6 +26,10 @@ public static class FSHResource
     public const string RoleClaims = nameof(RoleClaims);
     public const string Products = nameof(Products);
     public const string Brands = nameof(Brands);
+    public const string Employees = nameof(Employees);
+    public const string Designations = nameof(Designations);
+    public const string Locations = nameof(Locations);
+    public const string Categories = nameof(Categories);
 }
 
 public static class FSHPermissions
@@ -64,7 +68,33 @@ public static class FSHPermissions
         new("View Tenants", FSHAction.View, FSHResource.Tenants, IsRoot: true),
         new("Create Tenants", FSHAction.Create, FSHResource.Tenants, IsRoot: true),
         new("Update Tenants", FSHAction.Update, FSHResource.Tenants, IsRoot: true),
-        new("Upgrade Tenant Subscription", FSHAction.UpgradeSubscription, FSHResource.Tenants, IsRoot: true)
+        new("Upgrade Tenant Subscription", FSHAction.UpgradeSubscription, FSHResource.Tenants, IsRoot: true),
+
+        #region Employees
+        new("View Employees", FSHAction.View, FSHResource.Employees, IsBasic: true),
+        new("Search Employees", FSHAction.Search, FSHResource.Employees, IsBasic: true),
+        new("Create Employees", FSHAction.Create, FSHResource.Employees),
+        new("Update Employees", FSHAction.Update, FSHResource.Employees),
+        new("Delete Employees", FSHAction.Delete, FSHResource.Employees),
+        #endregion
+
+        #region Designations
+        new("View Designations", FSHAction.View, FSHResource.Designations, IsBasic: true),
+        new("Search Designations", FSHAction.Search, FSHResource.Designations, IsBasic: true),
+        new("Create Designations", FSHAction.Create, FSHResource.Designations),
+        #endregion
+
+        #region Locations
+        new("View Locations", FSHAction.View, FSHResource.Locations, IsBasic: true),
+        new("Search Locations", FSHAction.Search, FSHResource.Locations, IsBasic: true),
+        new("Create Locations", FSHAction.Create, FSHResource.Locations),
+        #endregion
+
+        #region Categories
+        new("View Categories", FSHAction.View, FSHResource.Categories, IsBasic: true),
+        new("Search Categories", FSHAction.Search, FSHResource.Categories, IsBasic: true),
+        new("Create Categories", FSHAction.Create, FSHResource.Categories)
+        #endregion
     };
 
     public static IReadOnlyList<FSHPermission> All { get; } = new ReadOnlyCollection<FSHPermission>(_all);
