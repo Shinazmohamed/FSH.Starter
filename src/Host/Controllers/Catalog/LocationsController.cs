@@ -10,4 +10,12 @@ public class LocationsController : VersionedApiController
     {
         return Mediator.Send(request);
     }
+
+    [HttpGet]
+    [MustHavePermission(FSHAction.View, FSHResource.Locations)]
+    [OpenApiOperation("Get a list of all locations.", "")]
+    public Task<List<LocationDetailsDto>> GetListAsync()
+    {
+        return Mediator.Send(new GetAllLocationsRequest());
+    }
 }

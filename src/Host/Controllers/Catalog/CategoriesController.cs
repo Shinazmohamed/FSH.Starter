@@ -10,4 +10,20 @@ public class CategoriesController : VersionedApiController
     {
         return Mediator.Send(request);
     }
+
+    [HttpGet("{id:guid}")]
+    [MustHavePermission(FSHAction.View, FSHResource.Categories)]
+    [OpenApiOperation("Get category details.", "")]
+    public Task<CategoryDetailsDto> GetAsync(Guid id)
+    {
+        return Mediator.Send(new GetCategoryRequest(id));
+    }
+
+    [HttpGet]
+    [MustHavePermission(FSHAction.View, FSHResource.Categories)]
+    [OpenApiOperation("Get a list of all categories.", "")]
+    public Task<List<CategoryDetailsDto>> GetListAsync()
+    {
+        return Mediator.Send(new GetAllCategoriesRequest());
+    }
 }

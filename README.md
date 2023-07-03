@@ -173,3 +173,13 @@ Here are a few ways by which you can support.
 -   Or, [consider buying me a coffee](https://www.buymeacoffee.com/codewithmukesh)! ☕
 
 [![buy-me-a-coffee](https://raw.githubusercontent.com/fullstackhero/dotnet-webapi-boilerplate/main/media/buy-me-a-coffee.png "buy-me-a-coffee")](https://www.buymeacoffee.com/codewithmukesh)
+
+
+
+- Migration Scripts Code
+
+create
+dotnet ef migrations add AddedCategoryLocationDesignationeEntity --project .././Migrators/Migrators.MSSQL/ --context ApplicationDbContext -o Migrations/Application
+
+Update
+dotnet ef database update AddedEmployeeEntity --project .././Migrators/Migrators.MSSQL/ --context ApplicationDbContext

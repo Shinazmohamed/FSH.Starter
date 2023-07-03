@@ -10,4 +10,12 @@ public class DesignationsController : VersionedApiController
     {
         return Mediator.Send(request);
     }
+
+    [HttpGet]
+    [MustHavePermission(FSHAction.View, FSHResource.Designations)]
+    [OpenApiOperation("Get a list of all designations.", "")]
+    public Task<List<DesignationDetailsDto>> GetListAsync()
+    {
+        return Mediator.Send(new GetAllDesignationsRequest());
+    }
 }
